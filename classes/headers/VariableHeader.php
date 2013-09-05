@@ -41,9 +41,12 @@ class VariableHeader extends HeaderBase {
 		'modifier_options'=>array(
 			'type'=>'array'
 		),
-		'offset'=>array(
+		'time_offset'=>array(
 			'type'=>'number'
 		),
+		'offset'=>array(
+			'type'=>'number'
+		)
 	);
 	
 	public static function init($params, &$report) {		
@@ -203,7 +206,6 @@ class VariableHeader extends HeaderBase {
 				date_time_set($end,23,59,59);
 				if (isset($offset)) $end->modify($offset);
 				$report->macros[$params['name']]['end'] = date_format($end,$params['format']);
-				file_put_contents('/var/www/php-reports/debug.out', var_export($params, true));
 			}
 		}
 	}
